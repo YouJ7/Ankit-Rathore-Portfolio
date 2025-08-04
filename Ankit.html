@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Rathore - Process Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2980b9;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2980b9;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2980b9;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .job {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .job:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: #2980b9;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .duration {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #2980b9;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .degree {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .degree:hover {
+            transform: translateY(-5px);
+        }
+
+        .degree-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .university {
+            color: #2980b9;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .cgpa {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Ankit Rathore</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ankit Rathore</h1>
+                <p class="subtitle">Process Engineer | Beverage Industry | Operations Expert</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Plants Commissioned</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">96%</span>
+                            <span class="stat-label">Average Yield</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>Astute professional with 2+ years of cross-functional exposure in food process engineering and operations. I specialize in leading and managing all aspects of plant operational excellence, commissioning, and troubleshooting while ensuring the highest level of quality, efficiency, and compliance with industry regulations.</p>
+                    
+                    <p>I have successfully led the commissioning of 5 beverage processing plants with excellent production efficiencies, working with industry leaders like Tetra Pak, Reliance, and Coca-Cola. My expertise spans process standardization, yield optimization, and implementing cutting-edge technologies in food and beverage manufacturing.</p>
+                    
+                    <p>With a strong academic background from IIT Kharagpur and hands-on experience in plant operations, I bring a unique combination of theoretical knowledge and practical expertise to drive operational excellence in the food processing industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Process Engineer</h3>
+                            <p class="company">Tetra Pak Pvt. Ltd, Pune</p>
+                        </div>
+                        <span class="duration">Oct 2023 - Present</span>
+                    </div>
+                    <ul class="achievements">
+                        <li>Implemented strategic planning for commercialization of two new products with Reliance R&D team, achieving 96% yield</li>
+                        <li>Led commissioning of MBCPL Plant with 1800 BPM production capacity including Dry Sugar, CSD Process line, and Blending Line</li>
+                        <li>Achieved 96.2% concentrate yield and 98.5% sugar yield with Reliance Mysore</li>
+                        <li>Managed material ordering through SAP S4 HANA for major key customers</li>
+                        <li>Optimized fill flush signal sequence with pasteurizer, resulting in 3.2% yield improvement</li>
+                        <li>Successfully commissioned five plants (4 Coca Cola, 1 Reliance) with comprehensive training and documentation</li>
+                        <li>Awarded for outstanding commissioning work at BAIL Chhata</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Management Trainee</h3>
+                            <p class="company">Happilo International Pvt. Ltd., Bangalore</p>
+                        </div>
+                        <span class="duration">Jun 2022 - Oct 2023</span>
+                    </div>
+                    <ul class="achievements">
+                        <li>Directed production capacity achievement from 2,000 to 120,000 units/shift - a remarkable 60-fold increase</li>
+                        <li>Executed process standardization for roasted & salted nuts with 98% yield consistency</li>
+                        <li>Created and implemented SOPs for process flow across Nut line, packaging machines, and manual tables</li>
+                        <li>Facilitated commissioning of two optical sorters (Almond & Raisin) with OEM & Plant Team</li>
+                        <li>Deployed SAP S4 Hana Production Planning module for enhanced scheduling</li>
+                        <li>Achieved 95%+ production compliance while managing scheduling, manpower, and profitability</li>
+                        <li>Implemented Kaizen initiatives reducing wastage by 50%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <i class="fas fa-cogs skill-icon"></i>
+                    <h3>Technical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Commissioning</span>
+                        <span class="skill-tag">Process Simulation</span>
+                        <span class="skill-tag">SAP S4 HANA</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">PowerPoint</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <h3>Analytical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Creative Thinking</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <i class="fas fa-users skill-icon"></i>
+                    <h3>Soft Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">People Management</span>
+                        <span class="skill-tag">Quick Learner</span>
+                        <span class="skill-tag">Adaptable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="degree">
+                    <h3 class="degree-title">Master of Technology</h3>
+                    <p class="university">Food Process Engineering<br>IIT Kharagpur</p>
+                    <p>Jul 2020 - May 2022</p>
+                    <span class="cgpa">CGPA: 9.24</span>
+                </div>
+
+                <div class="degree">
+                    <h3 class="degree-title">Bachelor of Technology</h3>
+                    <p class="university">Agricultural Engineering<br>JNKVV Jabalpur</p>
+                    <p>Jul 2016 - May 2020</p>
+                    <span class="cgpa">CGPA: 8.53</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>Ready to discuss opportunities in food process engineering and operations?</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <h3>Phone</h3>
+                    <a href="tel:+917999501585">+91 7999501585</a>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:ankitra1rathore@gmail.com">ankitra1rathore@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <h3>Location</h3>
+                    <p>Indore, Madhya Pradesh</p>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/ankit-rathore35971a200" target="_blank">Connect with me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add animation classes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
